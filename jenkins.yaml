@@ -2,6 +2,7 @@
           - script: >
               pipelineJob('docs') {
                 properties {
+                  options { disableConcurrentBuilds() }
                   githubProjectUrl('https://github.com/robinmordasiewicz/docs')
                   pipelineTriggers {
                       triggers {
@@ -27,6 +28,7 @@
           - script: >
               pipelineJob('docs') {
                 properties {
+                  options { disableConcurrentBuilds() }
                   githubProjectUrl('https://github.com/robinmordasiewicz/docs')
                   pipelineTriggers {
                       triggers {
@@ -51,6 +53,7 @@
           - script: >
               pipelineJob('sphinx-container') {
                 properties {
+                  options { disableConcurrentBuilds() }
                   githubProjectUrl('https://github.com/robinmordasiewicz/sphinx-container')
                   pipelineTriggers {
                       triggers {
@@ -75,6 +78,7 @@
           - script: >
               pipelineJob('jenkins-container') {
                 properties {
+                  options { disableConcurrentBuilds() }
                   githubProjectUrl('https://github.com/robinmordasiewicz/jenkins-container')
                   pipelineTriggers {
                       triggers {
@@ -99,6 +103,7 @@
           - script: >
               pipelineJob('helm-charts') {
                 properties {
+                  options { disableConcurrentBuilds() }
                   githubProjectUrl('https://github.com/robinmordasiewicz/helm-charts')
                   pipelineTriggers {
                       triggers {
@@ -123,6 +128,7 @@
           - script: >
               pipelineJob('argocd') {
                 properties {
+                  options { disableConcurrentBuilds() }
                   githubProjectUrl('https://github.com/robinmordasiewicz/argocd')
                   pipelineTriggers {
                       triggers {
@@ -147,6 +153,7 @@
           - script: >
               pipelineJob('nginx-container') {
                 properties {
+                  options { disableConcurrentBuilds() }
                   githubProjectUrl('https://github.com/robinmordasiewicz/nginx-container')
                   pipelineTriggers {
                       triggers {
