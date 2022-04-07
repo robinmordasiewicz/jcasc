@@ -147,7 +147,6 @@
           - script: >
               pipelineJob('nginx-container') {
                 properties {
-                  disableConcurrentBuilds()
                   githubProjectUrl('https://github.com/robinmordasiewicz/nginx-container')
                   pipelineTriggers {
                       triggers {
