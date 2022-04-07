@@ -1,25 +1,177 @@
-jobs:
-  - script: >
-      pipelineJob('docs') {
-        properties {
-          githubProjectUrl('https://github.com/robinmordasiewicz/docs')
-          pipelineTriggers {
-              triggers {
-                githubPush()
-              }
-           }
-        }
-        definition {
-          cpsScm {
-            scm {
-              git {
-                remote {
-                  url('https://github.com/robinmordasiewicz/make-html.git')
+        jobs:
+          - script: >
+              pipelineJob('docs') {
+                properties {
+                  githubProjectUrl('https://github.com/robinmordasiewicz/docs')
+                  pipelineTriggers {
+                      triggers {
+                        githubPush()
+                        pollSCM('H/15 * * * *')
+                      }
+                   }
                 }
-                branch('main')
-                extensions {}
+                definition {
+                  cpsScm {
+                    scm {
+                      git {
+                        remote {
+                          url('https://github.com/robinmordasiewicz/make-html.git')
+                        }
+                        branch('main')
+                        extensions {}
+                      }
+                    }
+                  }
+                }
               }
-            }
-          }
-        }
-      }
+        jobs:
+          - script: >
+              pipelineJob('docs') {
+                properties {
+                  githubProjectUrl('https://github.com/robinmordasiewicz/docs')
+                  pipelineTriggers {
+                      triggers {
+                        githubPush()
+                        pollSCM('H/15 * * * *')
+                      }
+                   }
+                }
+                definition {
+                  cpsScm {
+                    scm {
+                      git {
+                        remote {
+                          url('https://github.com/robinmordasiewicz/make-html.git')
+                        }
+                        branch('main')
+                        extensions {}
+                      }
+                    }
+                  }
+                }
+              }
+          - script: >
+              pipelineJob('sphinx-container') {
+                properties {
+                  githubProjectUrl('https://github.com/robinmordasiewicz/sphinx-container')
+                  pipelineTriggers {
+                      triggers {
+                        githubPush()
+                        pollSCM('H/15 * * * *')
+                      }
+                   }
+                }
+                definition {
+                  cpsScm {
+                    scm {
+                      git {
+                        remote {
+                          url('https://github.com/robinmordasiewicz/sphinx-container.git')
+                        }
+                        branch('main')
+                        extensions {}
+                      }
+                    }
+                  }
+                }
+              }
+          - script: >
+              pipelineJob('jenkins-container') {
+                properties {
+                  githubProjectUrl('https://github.com/robinmordasiewicz/jenkins-container')
+                  pipelineTriggers {
+                      triggers {
+                        githubPush()
+                        pollSCM('H/15 * * * *')
+                      }
+                   }
+                }
+                definition {
+                  cpsScm {
+                    scm {
+                      git {
+                        remote {
+                          url('https://github.com/robinmordasiewicz/jenkins-container.git')
+                        }
+                        branch('main')
+                        extensions {}
+                      }
+                    }
+                  }
+                }
+              }
+          - script: >
+              pipelineJob('helm-charts') {
+                properties {
+                  githubProjectUrl('https://github.com/robinmordasiewicz/helm-charts')
+                  pipelineTriggers {
+                      triggers {
+                        githubPush()
+                        pollSCM('H/15 * * * *')
+                      }
+                   }
+                }
+                definition {
+                  cpsScm {
+                    scm {
+                      git {
+                        remote {
+                          url('https://github.com/robinmordasiewicz/helm-charts.git')
+                        }
+                        branch('main')
+                        extensions {}
+                      }
+                    }
+                  }
+                }
+              }
+          - script: >
+              pipelineJob('argocd') {
+                properties {
+                  githubProjectUrl('https://github.com/robinmordasiewicz/argocd')
+                  pipelineTriggers {
+                      triggers {
+                        githubPush()
+                        pollSCM('H/15 * * * *')
+                      }
+                   }
+                }
+                definition {
+                  cpsScm {
+                    scm {
+                      git {
+                        remote {
+                          url('https://github.com/robinmordasiewicz/argocd.git')
+                        }
+                        branch('main')
+                        extensions {}
+                      }
+                    }
+                  }
+                }
+              }
+          - script: >
+              pipelineJob('nginx-container') {
+                properties {
+                  githubProjectUrl('https://github.com/robinmordasiewicz/nginx-container')
+                  pipelineTriggers {
+                      triggers {
+                        githubPush()
+                        pollSCM('H/15 * * * *')
+                      }
+                   }
+                }
+                definition {
+                  cpsScm {
+                    scm {
+                      git {
+                        remote {
+                          url('https://github.com/robinmordasiewicz/nginx-container.git')
+                        }
+                        branch('main')
+                        extensions {}
+                      }
+                    }
+                  }
+                }
+              }
