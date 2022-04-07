@@ -1,0 +1,23 @@
+pipelineJob('docs') {
+  properties {
+    githubProjectUrl('https://github.com/robinmordasiewicz/docs')
+    pipelineTriggers {
+        triggers {
+          githubPush()
+        }
+     }
+  }
+  definition {
+    cpsScm {
+      scm {
+        git {
+          remote {
+            url('https://github.com/robinmordasiewicz/make-html.git')
+          }
+          branch('main')
+          extensions {}
+        }
+      }
+    }
+  }
+}
