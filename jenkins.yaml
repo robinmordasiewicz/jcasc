@@ -6,7 +6,6 @@
                   pipelineTriggers {
                       triggers {
                         githubPush()
-                        pollSCM('H/15 * * * *')
                       }
                    }
                 }
@@ -32,7 +31,6 @@
                   pipelineTriggers {
                       triggers {
                         githubPush()
-                        pollSCM('H/15 * * * *')
                       }
                    }
                 }
@@ -57,7 +55,6 @@
                   pipelineTriggers {
                       triggers {
                         githubPush()
-                        pollSCM('H/15 * * * *')
                       }
                    }
                 }
@@ -82,7 +79,6 @@
                   pipelineTriggers {
                       triggers {
                         githubPush()
-                        pollSCM('H/15 * * * *')
                       }
                    }
                 }
@@ -107,7 +103,6 @@
                   pipelineTriggers {
                       triggers {
                         githubPush()
-                        pollSCM('H/15 * * * *')
                       }
                    }
                 }
@@ -132,7 +127,6 @@
                   pipelineTriggers {
                       triggers {
                         githubPush()
-                        pollSCM('H/15 * * * *')
                       }
                    }
                 }
@@ -157,7 +151,6 @@
                   pipelineTriggers {
                       triggers {
                         githubPush()
-                        pollSCM('H/15 * * * *')
                       }
                    }
                 }
