@@ -23,11 +23,10 @@
                   }
                 }
               }
-        jobs:
           - script: >
-              pipelineJob('docs') {
+              pipelineJob('sphinx') {
                 properties {
-                  githubProjectUrl('https://github.com/robinmordasiewicz/docs')
+                  githubProjectUrl('https://github.com/robinmordasiewicz/sphinx')
                   pipelineTriggers {
                       triggers {
                         githubPush()
@@ -39,7 +38,7 @@
                     scm {
                       git {
                         remote {
-                          url('https://github.com/robinmordasiewicz/make-html.git')
+                          url('https://github.com/robinmordasiewicz/sphinx.git')
                         }
                         branch('main')
                         extensions {}
@@ -49,9 +48,9 @@
                 }
               }
           - script: >
-              pipelineJob('sphinx-container') {
+              pipelineJob('jenkins') {
                 properties {
-                  githubProjectUrl('https://github.com/robinmordasiewicz/sphinx-container')
+                  githubProjectUrl('https://github.com/robinmordasiewicz/jenkins')
                   pipelineTriggers {
                       triggers {
                         githubPush()
@@ -63,31 +62,7 @@
                     scm {
                       git {
                         remote {
-                          url('https://github.com/robinmordasiewicz/sphinx-container.git')
-                        }
-                        branch('main')
-                        extensions {}
-                      }
-                    }
-                  }
-                }
-              }
-          - script: >
-              pipelineJob('jenkins-container') {
-                properties {
-                  githubProjectUrl('https://github.com/robinmordasiewicz/jenkins-container')
-                  pipelineTriggers {
-                      triggers {
-                        githubPush()
-                      }
-                   }
-                }
-                definition {
-                  cpsScm {
-                    scm {
-                      git {
-                        remote {
-                          url('https://github.com/robinmordasiewicz/jenkins-container.git')
+                          url('https://github.com/robinmordasiewicz/jenkins.git')
                         }
                         branch('main')
                         extensions {}
@@ -145,9 +120,9 @@
                 }
               }
           - script: >
-              pipelineJob('nginx-container') {
+              pipelineJob('nginx') {
                 properties {
-                  githubProjectUrl('https://github.com/robinmordasiewicz/nginx-container')
+                  githubProjectUrl('https://github.com/robinmordasiewicz/nginx')
                   pipelineTriggers {
                       triggers {
                         githubPush()
@@ -159,7 +134,7 @@
                     scm {
                       git {
                         remote {
-                          url('https://github.com/robinmordasiewicz/nginx-container.git')
+                          url('https://github.com/robinmordasiewicz/nginx.git')
                         }
                         branch('main')
                         extensions {}
