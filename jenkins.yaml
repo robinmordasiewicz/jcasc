@@ -6,6 +6,9 @@
         jobs:
           - script: >
               pipelineJob('ubuntu') {
+                description('A ubuntu container with some utilities for running inside kubernetes')
+                displayName('Ubuntu Container')
+                quietPeriod(120)
                 properties {
                   githubProjectUrl('https://github.com/robinmordasiewicz/ubuntu')
                   pipelineTriggers {
