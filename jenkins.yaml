@@ -80,9 +80,9 @@
                 }
               }
           - script: >
-              pipelineJob('docs') {
+              pipelineJob('f5-cnf-lab') {
                 properties {
-                  githubProjectUrl('https://github.com/robinmordasiewicz/docs')
+                  githubProjectUrl('https://github.com/robinmordasiewicz/f5-cnf-lab')
                   pipelineTriggers {
                       triggers {
                         githubPush()
