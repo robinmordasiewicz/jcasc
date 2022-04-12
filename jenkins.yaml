@@ -53,9 +53,9 @@
                 }
               }
           - script: >
-              pipelineJob('docs') {
+              pipelineJob('make-html') {
                 properties {
-                  githubProjectUrl('https://github.com/robinmordasiewicz/docs')
+                  githubProjectUrl('https://github.com/robinmordasiewicz/make-html')
                   pipelineTriggers {
                       triggers {
                         githubPush()
@@ -74,6 +74,19 @@
                       }
                     }
                   }
+                }
+              }
+          - script: >
+              pipelineJob('docs') {
+                properties {
+                  githubProjectUrl('https://github.com/robinmordasiewicz/docs')
+                  pipelineTriggers {
+                      triggers {
+                        githubPush()
+                      }
+                   }
+                }
+                definition {
                 }
               }
           - script: >
