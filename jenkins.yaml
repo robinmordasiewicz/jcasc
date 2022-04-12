@@ -188,6 +188,9 @@
               }
           - script: >
               pipelineJob('nginx') {
+                description('nginx html container')
+                displayName('nginx html container')
+                quietPeriod(120)
                 properties {
                   githubProjectUrl('https://github.com/robinmordasiewicz/nginx')
                   pipelineTriggers {
