@@ -68,6 +68,7 @@
                   pipelineTriggers {
                       triggers {
                         githubPush()
+                        upstream(upstreamProjects: "sphinx-theme,f5-cnf-docs", threshold: hudson.model.Result.SUCCESS)
                       }
                    }
                 }
@@ -87,6 +88,9 @@
               }
           - script: >
               pipelineJob('f5-cnf-lab') {
+                description('Repo for the markdown source. This github repo should have a webhook, and this should be an upstream job to trigger make-html')
+                displayName('make html')
+                quietPeriod(60)
                 properties {
                   githubProjectUrl('https://github.com/robinmordasiewicz/f5-cnf-lab')
                   pipelineTriggers {
@@ -152,7 +156,7 @@
               }
           - script: >
               pipelineJob('helm-charts') {
-                description('Commiting a new version to github will trigger a github workflow which will publish a new helm chart.')
+                description('Commiting a new version to github will trigger a github workflow which will publish a new helm chart. This pipeline should run after the upstream jenkins pipeline finishes. The workflow in the Jenkinsfile should be used as an upstream for argocd')
                 displayName('helm charts')
                 quietPeriod(60)
                 properties {
@@ -160,6 +164,7 @@
                   pipelineTriggers {
                       triggers {
                         githubPush()
+                        upstream(upstreamProjects: "jenkins", threshold: hudson.model.Result.SUCCESS)
                       }
                    }
                 }
@@ -179,11 +184,15 @@
               }
           - script: >
               pipelineJob('argocd') {
+                description('nginx and helm-charts should be upstream jobs for argocd. argcocd github repo webhook')
+                displayName('Deployment')
+                quietPeriod(60)
                 properties {
                   githubProjectUrl('https://github.com/robinmordasiewicz/argocd')
                   pipelineTriggers {
                       triggers {
                         githubPush()
+                        upstream(upstreamProjects: "nginx,helm-charts", threshold: hudson.model.Result.SUCCESS)
                       }
                    }
                 }
@@ -203,9 +212,9 @@
               }
           - script: >
               pipelineJob('nginx') {
-                description('nginx html container')
-                displayName('nginx html container')
-                quietPeriod(120)
+                description('nginx/html container')
+                displayName('This nginx container has the markdown rendered as html embedded inside.')
+                quietPeriod(60)
                 properties {
                   githubProjectUrl('https://github.com/robinmordasiewicz/nginx')
                   pipelineTriggers {
