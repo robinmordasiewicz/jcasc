@@ -99,16 +99,18 @@
                    }
                 }
                 definition {
-                  cpsScm {
-                    scm {
-                      git {
-                        remote {
-                          url('https://github.com/robinmordasiewicz/sphinx.git')
+                  cps {
+                    script("""\
+                      pipeline {
+                        agent any
+                        stages {
+                          stage ('init') {
+                            steps {
+                              echo "Docs Job"
+                            }
+                          }
                         }
-                        branch('main')
-                        extensions {}
-                      }
-                    }
+                      }""".stripIndent())
                   }
                 }
               }
