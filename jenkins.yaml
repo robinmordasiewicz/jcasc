@@ -98,6 +98,19 @@
                       }
                    }
                 }
+                definition {
+                  cpsScm {
+                    scm {
+                      git {
+                        remote {
+                          url('https://github.com/robinmordasiewicz/sphinx.git')
+                        }
+                        branch('main')
+                        extensions {}
+                      }
+                    }
+                  }
+                }
               }
           - script: >
               pipelineJob('sphinx') {
@@ -163,6 +176,7 @@
                   pipelineTriggers {
                       triggers {
                         githubPush()
+                        upstream('jenkins', 'SUCCESS')
                       }
                    }
                 }
