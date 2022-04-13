@@ -209,8 +209,8 @@
               }
           - script: >
               pipelineJob('nginx') {
-                description('nginx/html container')
-                displayName('This nginx container has the markdown rendered as html embedded inside.')
+                displayName('nginx/html container')
+                ddescription('This nginx container has the markdown rendered as html embedded inside.')
                 quietPeriod(60)
                 properties {
                   githubProjectUrl('https://github.com/robinmordasiewicz/nginx')
