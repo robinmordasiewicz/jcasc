@@ -98,8 +98,8 @@
               }
           - script: >
               pipelineJob('sphinx') {
-                description('The sphinx-build html rendering engine container.')
-                displayName('sphinx Container')
+                description('The sphinx-build html rendering engine container. This pipeline will update make-html/Jenkinsfile. This should not be an upstream trigger for make-html, and make-html should have a webhook')
+                displayName('sphinx container')
                 quietPeriod(60)
                 properties {
                   githubProjectUrl('https://github.com/robinmordasiewicz/sphinx')
