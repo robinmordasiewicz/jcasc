@@ -7,7 +7,7 @@
           - script: >
               pipelineJob('ubuntu') {
                 description('A ubuntu container with some utilities for running inside kubernetes')
-                displayName('Ubuntu Container')
+                displayName('ubuntu container')
                 quietPeriod(60)
                 properties {
                   githubProjectUrl('https://github.com/robinmordasiewicz/ubuntu')
@@ -61,7 +61,7 @@
           - script: >
               pipelineJob('make-html') {
                 description('When the theme or source docs repos are changed this make-html pipeline is triggered.')
-                displayName('Make HTML')
+                displayName('make html')
                 quietPeriod(60)
                 properties {
                   githubProjectUrl('https://github.com/robinmordasiewicz/make-html')
@@ -125,6 +125,9 @@
               }
           - script: >
               pipelineJob('jenkins') {
+                description('The jenkins container pipeline will check the currently declared version and make sure that the image exists in the repo.')
+                displayName('jenkins container')
+                quietPeriod(60)
                 properties {
                   githubProjectUrl('https://github.com/robinmordasiewicz/jenkins')
                   pipelineTriggers {
@@ -149,6 +152,9 @@
               }
           - script: >
               pipelineJob('helm-charts') {
+                description('Commiting a new version to github will trigger a github workflow which will publish a new helm chart.')
+                displayName('helm charts')
+                quietPeriod(60)
                 properties {
                   githubProjectUrl('https://github.com/robinmordasiewicz/helm-charts')
                   pipelineTriggers {
