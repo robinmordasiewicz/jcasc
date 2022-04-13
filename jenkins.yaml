@@ -176,7 +176,6 @@
                   pipelineTriggers {
                       triggers {
                         githubPush()
-                        upstream('jenkins', 'SUCCESS')
                       }
                    }
                 }
