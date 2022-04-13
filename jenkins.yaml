@@ -196,7 +196,7 @@
           - script: >
               pipelineJob('argocd') {
                 description('nginx and helm-charts should be upstream jobs for argocd. argcocd github repo webhook')
-                displayName('Deployment')
+                displayName('continuous deployment')
                 quietPeriod(60)
                 properties {
                   githubProjectUrl('https://github.com/robinmordasiewicz/argocd')
