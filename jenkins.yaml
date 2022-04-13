@@ -34,7 +34,7 @@
           - script: >
               pipelineJob('sphinx-theme') {
                 description('css and templates are used to render html with a sylized layout')
-                displayName('html theme')
+                displayName('sphinx theme')
                 quietPeriod(60)
                 properties {
                   githubProjectUrl('https://github.com/robinmordasiewicz/sphinx-theme')
