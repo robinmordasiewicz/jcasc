@@ -88,7 +88,7 @@
           - script: >
               pipelineJob('f5-cnf-lab') {
                 description('Repo for the markdown source. This github repo should have a webhook, and this should be an upstream job to trigger make-html')
-                displayName('markdown source docs')
+                displayName('docs')
                 quietPeriod(60)
                 properties {
                   githubProjectUrl('https://github.com/robinmordasiewicz/f5-cnf-lab')
