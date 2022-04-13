@@ -68,6 +68,7 @@
                   pipelineTriggers {
                       triggers {
                         githubPush()
+                        upstream(upstreamProjects: "sphinx-theme,f5-cnf-docs", threshold: hudson.model.Result.SUCCESS)
                       }
                    }
                 }
@@ -163,6 +164,7 @@
                   pipelineTriggers {
                       triggers {
                         githubPush()
+                        upstream(upstreamProjects: "jenkins", threshold: hudson.model.Result.SUCCESS)
                       }
                    }
                 }
@@ -190,6 +192,7 @@
                   pipelineTriggers {
                       triggers {
                         githubPush()
+                        upstream(upstreamProjects: "nginx,helm-charts", threshold: hudson.model.Result.SUCCESS)
                       }
                    }
                 }
