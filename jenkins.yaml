@@ -8,7 +8,7 @@
               pipelineJob('ubuntu') {
                 description('A ubuntu container with some utilities for running inside kubernetes')
                 displayName('Ubuntu Container')
-                quietPeriod(120)
+                quietPeriod(60)
                 properties {
                   githubProjectUrl('https://github.com/robinmordasiewicz/ubuntu')
                   pipelineTriggers {
@@ -33,6 +33,9 @@
               }
           - script: >
               pipelineJob('sphinx-theme') {
+                description('css and templates are used to render html with a sylized layout')
+                displayName('html theme')
+                quietPeriod(60)
                 properties {
                   githubProjectUrl('https://github.com/robinmordasiewicz/sphinx-theme')
                   pipelineTriggers {
@@ -57,6 +60,9 @@
               }
           - script: >
               pipelineJob('make-html') {
+                description('When the theme or source docs repos are changed this make-html pipeline is triggered.')
+                displayName('Make HTML')
+                quietPeriod(60)
                 properties {
                   githubProjectUrl('https://github.com/robinmordasiewicz/make-html')
                   pipelineTriggers {
@@ -92,6 +98,9 @@
               }
           - script: >
               pipelineJob('sphinx') {
+                description('The sphinx-build html rendering engine container.')
+                displayName('sphinx Container')
+                quietPeriod(60)
                 properties {
                   githubProjectUrl('https://github.com/robinmordasiewicz/sphinx')
                   pipelineTriggers {
