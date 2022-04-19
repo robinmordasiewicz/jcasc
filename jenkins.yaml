@@ -5,12 +5,12 @@
               name: "git"
         jobs:
           - script: >
-              pipelineJob('melt') {
+              pipelineJob('mlt') {
                 description('MLT Framework')
-                displayName('melt container')
+                displayName('mlt container')
                 quietPeriod(60)
                 properties {
-                  githubProjectUrl('https://github.com/robinmordasiewicz/melt')
+                  githubProjectUrl('https://github.com/robinmordasiewicz/mlt')
                   pipelineTriggers {
                       triggers {
                         githubPush()
@@ -22,7 +22,7 @@
                     scm {
                       git {
                         remote {
-                          url('https://github.com/robinmordasiewicz/melt.git')
+                          url('https://github.com/robinmordasiewicz/mlt.git')
                         }
                         branch('main')
                         extensions {}
