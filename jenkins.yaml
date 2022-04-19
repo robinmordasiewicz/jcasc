@@ -5,6 +5,33 @@
               name: "git"
         jobs:
           - script: >
+              pipelineJob('video-publisher') {
+                description('Publish videos to social media platforms')
+                displayName('video-publisher container')
+                quietPeriod(60)
+                properties {
+                  githubProjectUrl('https://github.com/robinmordasiewicz/vide-publisher')
+                  pipelineTriggers {
+                      triggers {
+                        githubPush()
+                      }
+                   }
+                }
+                definition {
+                  cpsScm {
+                    scm {
+                      git {
+                        remote {
+                          url('https://github.com/robinmordasiewicz/video-publisher.git')
+                        }
+                        branch('main')
+                        extensions {}
+                      }
+                    }
+                  }
+                }
+              }
+          - script: >
               pipelineJob('mlt') {
                 description('MLT Framework')
                 displayName('mlt container')
