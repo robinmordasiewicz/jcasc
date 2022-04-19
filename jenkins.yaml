@@ -113,6 +113,33 @@
                 }
               }
           - script: >
+              pipelineJob('make-video') {
+                description('When the theme or source docs repos are changed this make-video pipeline is triggered.')
+                displayName('make video')
+                quietPeriod(60)
+                properties {
+                  githubProjectUrl('https://github.com/robinmordasiewicz/make-video')
+                  pipelineTriggers {
+                      triggers {
+                        githubPush()
+                      }
+                   }
+                }
+                definition {
+                  cpsScm {
+                    scm {
+                      git {
+                        remote {
+                          url('https://github.com/robinmordasiewicz/make-video.git')
+                        }
+                        branch('main')
+                        extensions {}
+                      }
+                    }
+                  }
+                }
+              }
+          - script: >
               pipelineJob('f5-cnf-lab') {
                 description('Repo for the markdown source. This github repo should have a webhook, and this should be an upstream job to trigger make-html')
                 displayName('docs')
