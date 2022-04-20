@@ -5,6 +5,33 @@
               name: "git"
         jobs:
           - script: >
+              pipelineJob('imagemagick') {
+                description('imagemagick for creating and editing images')
+                displayName('imagemagick container')
+                quietPeriod(60)
+                properties {
+                  githubProjectUrl('https://github.com/robinmordasiewicz/imagemagick')
+                  pipelineTriggers {
+                      triggers {
+                        githubPush()
+                      }
+                   }
+                }
+                definition {
+                  cpsScm {
+                    scm {
+                      git {
+                        remote {
+                          url('https://github.com/robinmordasiewicz/imagemagick.git')
+                        }
+                        branch('main')
+                        extensions {}
+                      }
+                    }
+                  }
+                }
+              }
+          - script: >
               pipelineJob('video-publisher') {
                 description('Publish videos to social media platforms')
                 displayName('video-publisher container')
