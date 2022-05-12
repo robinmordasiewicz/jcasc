@@ -5,6 +5,33 @@
               name: "git"
         jobs:
           - script: >
+              pipelineJob('ffmpeg') {
+                description('ffmpeg container')
+                displayName('ffmpeg container')
+                quietPeriod(60)
+                properties {
+                  githubProjectUrl('https://github.com/robinmordasiewicz/ffmpeg')
+                  pipelineTriggers {
+                      triggers {
+                        githubPush()
+                      }
+                   }
+                }
+                definition {
+                  cpsScm {
+                    scm {
+                      git {
+                        remote {
+                          url('https://github.com/robinmordasiewicz/ffmpeg.git')
+                        }
+                        branch('main')
+                        extensions {}
+                      }
+                    }
+                  }
+                }
+              }
+          - script: >
               pipelineJob('Intro') {
                 description('Introduction Assets')
                 displayName('Introduction Assets')
