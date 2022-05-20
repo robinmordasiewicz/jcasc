@@ -5,12 +5,12 @@
               name: "git"
         jobs:
           - script: >
-              pipelineJob('mermaidcli') {
-                description('mermaidcli container')
-                displayName('mermaidcli container')
+              pipelineJob('mermaid-cli') {
+                description('mermaid-cli container')
+                displayName('mermaid-cli container')
                 quietPeriod(60)
                 properties {
-                  githubProjectUrl('https://github.com/robinmordasiewicz/mermaidcli')
+                  githubProjectUrl('https://github.com/robinmordasiewicz/mermaid-cli')
                   pipelineTriggers {
                       triggers {
                         githubPush()
@@ -22,7 +22,7 @@
                     scm {
                       git {
                         remote {
-                          url('https://github.com/robinmordasiewicz/mermaidcli.git')
+                          url('https://github.com/robinmordasiewicz/mermaid-cli.git')
                         }
                         branch('main')
                         extensions {}
