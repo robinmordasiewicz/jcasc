@@ -194,12 +194,12 @@
                 }
               }
           - script: >
-              pipelineJob('mlt') {
+              pipelineJob('melt') {
                 description('MLT Framework')
-                displayName('mlt container')
+                displayName('melt container')
                 quietPeriod(60)
                 properties {
-                  githubProjectUrl('https://github.com/robinmordasiewicz/mlt')
+                  githubProjectUrl('https://github.com/robinmordasiewicz/melt')
                   pipelineTriggers {
                       triggers {
                         githubPush()
@@ -211,7 +211,7 @@
                     scm {
                       git {
                         remote {
-                          url('https://github.com/robinmordasiewicz/mlt.git')
+                          url('https://github.com/robinmordasiewicz/melt.git')
                         }
                         branch('main')
                         extensions {}
