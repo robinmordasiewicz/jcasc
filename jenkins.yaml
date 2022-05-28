@@ -283,6 +283,7 @@
                   githubProjectUrl('https://github.com/robinmordasiewicz/make-html')
                   pipelineTriggers {
                       triggers {
+                        upstream(upstreamProjects: 'sphinx-theme,f5-cnf-lab', threshold: hudson.model.Result.SUCCESS)
                         githubPush()
                       }
                    }
@@ -331,7 +332,7 @@
           - script: >
               pipelineJob('f5-cnf-lab') {
                 description('Repo for the markdown source. This github repo should have a webhook, and this should be an upstream job to trigger make-html')
-                displayName('docs')
+                displayName('f5-cnf-lab')
                 quietPeriod(5)
                 properties {
                   githubProjectUrl('https://github.com/robinmordasiewicz/f5-cnf-lab')
