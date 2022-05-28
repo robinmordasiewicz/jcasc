@@ -283,10 +283,6 @@
                   githubProjectUrl('https://github.com/robinmordasiewicz/make-html')
                   pipelineTriggers {
                       triggers {
-                        upstream(
-                            upstreamProjects: 'sphinx-theme,f5-cnf-lab',
-                            threshold: 'SUCCESS'
-                        )
                         githubPush()
                       }
                    }
