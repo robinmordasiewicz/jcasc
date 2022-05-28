@@ -345,11 +345,28 @@
                   cps {
                     script("""\
                       pipeline {
-                        agent any
+                          agent {
+                          kubernetes {
+                            yaml '''
+                              apiVersion: v1
+                              kind: Pod
+                              spec:
+                                containers:
+                                - name: ubuntu
+                                  image: robinhoodis/ubuntu:latest
+                                  imagePullPolicy: Always
+                                  command:
+                                  - cat
+                                  tty: true
+                              '''
+                          }
+                        }
                         stages {
                           stage ('init') {
                             steps {
-                              echo "Docs Job"
+                              container('ubuntu') {
+                                sh 'echo Docs'
+                              }
                             }
                           }
                         }
