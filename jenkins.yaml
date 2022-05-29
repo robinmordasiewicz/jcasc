@@ -277,7 +277,7 @@
           - script: >
               pipelineJob('make-content') {
                 description('When the theme or source docs repos are changed this make-content pipeline is triggered.')
-                displayName('make html')
+                displayName('make content')
                 quietPeriod(5)
                 properties {
                   githubProjectUrl('https://github.com/robinmordasiewicz/make-content')
