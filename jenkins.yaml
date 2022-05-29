@@ -275,12 +275,12 @@
                 }
               }
           - script: >
-              pipelineJob('make-content') {
-                description('When the theme or source docs repos are changed this make-content pipeline is triggered.')
-                displayName('make content')
+              pipelineJob('nginx') {
+                description('When the theme or source docs repos are changed this nginx pipeline is triggered.')
+                displayName('nginx')
                 quietPeriod(5)
                 properties {
-                  githubProjectUrl('https://github.com/robinmordasiewicz/make-content')
+                  githubProjectUrl('https://github.com/robinmordasiewicz/nginx')
                   pipelineTriggers {
                       triggers {
                         githubPush()
@@ -292,7 +292,7 @@
                     scm {
                       git {
                         remote {
-                          url('https://github.com/robinmordasiewicz/make-content.git')
+                          url('https://github.com/robinmordasiewicz/nginx.git')
                         }
                         branch('main')
                         extensions {}
@@ -303,7 +303,7 @@
               }
           - script: >
               pipelineJob('f5-cnf-lab') {
-                description('Repo for the markdown source. This github repo should have a webhook, and this should be an upstream job to trigger make-content')
+                description('Repo for the markdown source. This github repo should have a webhook, and this should be an upstream job to trigger nginx')
                 displayName('f5-cnf-lab')
                 quietPeriod(5)
                 properties {
@@ -349,7 +349,7 @@
               }
           - script: >
               pipelineJob('sphinx') {
-                description('The sphinx-build html rendering engine container. This pipeline will update make-content/Jenkinsfile. This should not be an upstream trigger for make-content, and make-content should have a webhook')
+                description('The sphinx-build html rendering engine container. This pipeline will update nginx/Jenkinsfile. This should not be an upstream trigger for nginx, and nginx should have a webhook')
                 displayName('sphinx container')
                 quietPeriod(5)
                 properties {
@@ -430,7 +430,7 @@
               }
           - script: >
               pipelineJob('argocd') {
-                description('make-content and helm-charts should be upstream jobs for argocd. argcocd github repo webhook')
+                description('nginx and helm-charts should be upstream jobs for argocd. argcocd github repo webhook')
                 displayName('continuous deployment')
                 quietPeriod(5)
                 properties {
