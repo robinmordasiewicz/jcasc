@@ -430,7 +430,7 @@
               }
           - script: >
               pipelineJob('argocd') {
-                description('nginx and helm-charts should be upstream jobs for argocd. argcocd github repo webhook')
+                description('make-content and helm-charts should be upstream jobs for argocd. argcocd github repo webhook')
                 displayName('continuous deployment')
                 quietPeriod(5)
                 properties {
@@ -447,33 +447,6 @@
                       git {
                         remote {
                           url('https://github.com/robinmordasiewicz/argocd.git')
-                        }
-                        branch('main')
-                        extensions {}
-                      }
-                    }
-                  }
-                }
-              }
-          - script: >
-              pipelineJob('nginx') {
-                displayName('nginx/html container')
-                description('This nginx container has the markdown rendered as html embedded inside.')
-                quietPeriod(5)
-                properties {
-                  githubProjectUrl('https://github.com/robinmordasiewicz/nginx')
-                  pipelineTriggers {
-                      triggers {
-                        githubPush()
-                      }
-                   }
-                }
-                definition {
-                  cpsScm {
-                    scm {
-                      git {
-                        remote {
-                          url('https://github.com/robinmordasiewicz/nginx.git')
                         }
                         branch('main')
                         extensions {}
