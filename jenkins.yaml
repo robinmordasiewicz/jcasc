@@ -59,12 +59,12 @@
                 }
               }
           - script: >
-              pipelineJob('marp') {
-                description('marp container')
-                displayName('marp container')
+              pipelineJob('marp-cli') {
+                description('marp-cli container')
+                displayName('marp-cli container')
                 quietPeriod(5)
                 properties {
-                  githubProjectUrl('https://github.com/robinmordasiewicz/marp')
+                  githubProjectUrl('https://github.com/robinmordasiewicz/marp-cli')
                   pipelineTriggers {
                       triggers {
                         githubPush()
@@ -76,7 +76,7 @@
                     scm {
                       git {
                         remote {
-                          url('https://github.com/robinmordasiewicz/marp.git')
+                          url('https://github.com/robinmordasiewicz/marp-cli.git')
                         }
                         branch('main')
                         extensions {}
