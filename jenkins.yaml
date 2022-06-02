@@ -5,6 +5,33 @@
               name: "git"
         jobs:
           - script: >
+              pipelineJob('terminalizer') {
+                description('terminalizer container')
+                displayName('terminalizer container')
+                quietPeriod(5)
+                properties {
+                  githubProjectUrl('https://github.com/robinmordasiewicz/terminalizer')
+                  pipelineTriggers {
+                      triggers {
+                        githubPush()
+                      }
+                   }
+                }
+                definition {
+                  cpsScm {
+                    scm {
+                      git {
+                        remote {
+                          url('https://github.com/robinmordasiewicz/terminalizer.git')
+                        }
+                        branch('main')
+                        extensions {}
+                      }
+                    }
+                  }
+                }
+              }
+          - script: >
               pipelineJob('diagrams') {
                 description('diagrams container')
                 displayName('diagrams container')
