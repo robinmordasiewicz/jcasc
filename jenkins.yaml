@@ -248,12 +248,12 @@
                 }
               }
           - script: >
-              pipelineJob('sphinx-theme') {
+              pipelineJob('theme') {
                 description('css and templates are used to render html with a sylized layout')
                 displayName('sphinx theme')
                 quietPeriod(5)
                 properties {
-                  githubProjectUrl('https://github.com/robinmordasiewicz/sphinx-theme')
+                  githubProjectUrl('https://github.com/robinmordasiewicz/theme')
                   pipelineTriggers {
                       triggers {
                         githubPush()
@@ -265,7 +265,7 @@
                     scm {
                       git {
                         remote {
-                          url('https://github.com/robinmordasiewicz/sphinx-theme.git')
+                          url('https://github.com/robinmordasiewicz/theme.git')
                         }
                         branch('main')
                         extensions {}
