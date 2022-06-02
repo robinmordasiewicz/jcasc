@@ -113,33 +113,6 @@
                 }
               }
           - script: >
-              pipelineJob('Intro') {
-                description('Introduction Assets')
-                displayName('Introduction Assets')
-                quietPeriod(5)
-                properties {
-                  githubProjectUrl('https://github.com/robinmordasiewicz/intro')
-                  pipelineTriggers {
-                      triggers {
-                        githubPush()
-                      }
-                   }
-                }
-                definition {
-                  cpsScm {
-                    scm {
-                      git {
-                        remote {
-                          url('https://github.com/robinmordasiewicz/intro.git')
-                        }
-                        branch('main')
-                        extensions {}
-                      }
-                    }
-                  }
-                }
-              }
-          - script: >
               pipelineJob('imagemagick') {
                 description('imagemagick for creating and editing images')
                 displayName('imagemagick container')
