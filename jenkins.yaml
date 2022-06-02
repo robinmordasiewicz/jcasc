@@ -249,8 +249,8 @@
               }
           - script: >
               pipelineJob('theme') {
-                description('css and templates are used to render html with a sylized layout')
-                displayName('sphinx theme')
+                description('css and templates are used to render html/PPTX/MP4/png/svg with a sylized layout')
+                displayName('theme')
                 quietPeriod(5)
                 properties {
                   githubProjectUrl('https://github.com/robinmordasiewicz/theme')
