@@ -5,6 +5,33 @@
               name: "git"
         jobs:
           - script: >
+              pipelineJob('contentascode') {
+                description('Content As Code')
+                displayName('Content As Code')
+                quietPeriod(5)
+                properties {
+                  githubProjectUrl('https://github.com/robinmordasiewicz/contentascode')
+                  pipelineTriggers {
+                      triggers {
+                        githubPush()
+                      }
+                   }
+                }
+                definition {
+                  cpsScm {
+                    scm {
+                      git {
+                        remote {
+                          url('https://github.com/robinmordasiewicz/termi.git')
+                        }
+                        branch('main')
+                        extensions {}
+                      }
+                    }
+                  }
+                }
+              }
+          - script: >
               pipelineJob('terminalizer') {
                 description('terminalizer container')
                 displayName('terminalizer container')
@@ -275,12 +302,12 @@
                 }
               }
           - script: >
-              pipelineJob('nginx') {
-                description('When the theme or source docs repos are changed this nginx pipeline is triggered.')
-                displayName('nginx')
+              pipelineJob('contentascode') {
+                description('When the theme or source docs repos are changed this pipeline is triggered.')
+                displayName('contentascode')
                 quietPeriod(5)
                 properties {
-                  githubProjectUrl('https://github.com/robinmordasiewicz/nginx')
+                  githubProjectUrl('https://github.com/robinmordasiewicz/contentascode')
                   pipelineTriggers {
                       triggers {
                         githubPush()
@@ -288,16 +315,35 @@
                    }
                 }
                 definition {
-                  cpsScm {
-                    scm {
-                      git {
-                        remote {
-                          url('https://github.com/robinmordasiewicz/nginx.git')
+                  cps {
+                    script("""\
+                      pipeline {
+                          agent {
+                          kubernetes {
+                            yaml '''
+                              apiVersion: v1
+                              kind: Pod
+                              spec:
+                                containers:
+                                - name: ubuntu
+                                  image: robinhoodis/ubuntu:latest
+                                  imagePullPolicy: Always
+                                  command:
+                                  - cat
+                                  tty: true
+                              '''
+                          }
                         }
-                        branch('main')
-                        extensions {}
-                      }
-                    }
+                        stages {
+                          stage ('init') {
+                            steps {
+                              container('ubuntu') {
+                                sh 'echo Docs'
+                              }
+                            }
+                          }
+                        }
+                      }""".stripIndent())
                   }
                 }
               }
