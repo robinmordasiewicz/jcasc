@@ -5,6 +5,33 @@
               name: "git"
         jobs:
           - script: >
+              pipelineJob('nginx') {
+                description('nginx')
+                displayName('nginx')
+                quietPeriod(5)
+                properties {
+                  githubProjectUrl('https://github.com/robinmordasiewicz/nginx')
+                  pipelineTriggers {
+                      triggers {
+                        githubPush()
+                      }
+                   }
+                }
+                definition {
+                  cpsScm {
+                    scm {
+                      git {
+                        remote {
+                          url('https://github.com/robinmordasiewicz/nginx.git')
+                        }
+                        branch('main')
+                        extensions {}
+                      }
+                    }
+                  }
+                }
+              }
+          - script: >
               pipelineJob('contentascode') {
                 description('Content As Code')
                 displayName('Content As Code')
@@ -22,7 +49,7 @@
                     scm {
                       git {
                         remote {
-                          url('https://github.com/robinmordasiewicz/termi.git')
+                          url('https://github.com/robinmordasiewicz/nginx.git')
                         }
                         branch('main')
                         extensions {}
