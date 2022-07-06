@@ -1,11 +1,11 @@
         jobs:
           - script: >
-              pipelineJob('puppeteer') {
+              pipelineJob('screenrecording') {
                 description('Screen Recording')
-                displayName('puppeteer')
+                displayName('screenrecording')
                 quietPeriod(5)
                 properties {
-                  githubProjectUrl('https://github.com/robinmordasiewicz/puppeteer')
+                  githubProjectUrl('https://github.com/robinmordasiewicz/screenrecording')
                   pipelineTriggers {
                       triggers {
                         githubPush()
@@ -17,7 +17,7 @@
                     scm {
                       git {
                         remote {
-                          url('https://github.com/robinmordasiewicz/puppeteer.git')
+                          url('https://github.com/robinmordasiewicz/screenrecording.git')
                         }
                         branch('main')
                         extensions {}
